@@ -1,0 +1,66 @@
+
+[
+  {
+    "type": "mutation_type",
+    "id": "crc"
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "crc_eoc_oc_game_begin",
+    "eoc_type": "EVENT",
+    "required_event": "game_begin",
+    "effect": [
+      { "run_eocs": [
+        {
+          "id": "crc_eoc_initialize",
+          "condition": { "and": [ { "not": { "u_has_trait": "crc_class_menu" } } ] },
+          "effect": [
+            {
+              "u_message": "クラシックRPG職が有効化されました。変異メニューから職業を選択できます。"
+            },
+            { "u_add_trait": "crc_class_menu" }
+          ]
+        }
+      ] }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "crc_eoc_oc_game_load",
+    "eoc_type": "EVENT",
+    "required_event": "game_load",
+    "effect": [
+      { "run_eocs": [
+        "crc_eoc_initialize"
+      ] }
+    ]
+  },
+  {
+    "type": "mutation",
+    "id": "crc_class_menu",
+    "name": { "str": "転職メニューを開く[CRC]" },
+    "points": 0,
+    "description": "職業を設定するメニューを開きます。",
+    "category": [ "crc" ],
+    "active": true,
+    "activated_eocs": [ "crc_eoc_class_menu" ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "crc_eoc_class_menu",
+    "effect": [ { "open_dialogue": { "topic": "CRC_TALK_CLASS_MENU_MAIN" } } ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "CRC_TALK_CLASS_MENU_MAIN",
+    "dynamic_line": "設定する職業を選んでください。",
+    "responses": [
+      {
+        "condition": { "not": { "u_has_trait": "crc_trait_priest" } },
+        "text": "Gain [<trait_name:crc_trait_priest>]",
+        "topic": "CRC_TALK_CLASS_MENU_MAIN_PRIEST"
+      },
+      { "text": "やめる。", "topic": "TALK_DONE" }
+    ]
+  }
+]
