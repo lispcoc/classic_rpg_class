@@ -1,0 +1,126 @@
+[
+  {
+    "type": "talk_topic",
+    "id": "CRC_TALK_CLASS_MENU_MAIN_WARRIOR",
+    "dynamic_line": "<trait_name:crc_trait_warrior>: \"<trait_description:crc_trait_warrior>\"",
+    "responses": [
+      {
+        "text": "この職業を選ぶ。",
+        "topic": "CRC_TALK_CLASS_MENU_MAIN",
+        "effect": [
+          {
+            "u_add_trait": "crc_trait_novice"
+          },
+          {
+            "u_add_trait": "crc_trait_warrior"
+          }
+        ]
+      },
+      {
+        "text": "戻る。",
+        "topic": "CRC_TALK_CLASS_MENU_MAIN"
+      },
+      {
+        "text": "やめる。",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "profession",
+    "id": "crc_warrior",
+    "name": "戦士[CRC]",
+    "description": "近接戦闘を専門とする職業です。非常に打たれ強く、近接武器全般の扱いに長けています。マナが自然回復しないため、魔法を使用するにはアイテムの助けが必要になります。",
+    "points": 6,
+    "traits": [
+      "crc_trait_warrior"
+    ],
+    "skills": [
+      {
+        "level": 2,
+        "name": "melee"
+      },
+      {
+        "level": 1,
+        "name": "bashing"
+      },
+      {
+        "level": 1,
+        "name": "cutting"
+      }
+    ],
+    "items": {
+      "both": {
+        "items": [
+          "longsword",
+          "armor_scrapsuit",
+          "jeans",
+          "longshirt",
+          "socks",
+          "sneakers"
+        ]
+      },
+      "male": [
+        "boxer_shorts"
+      ],
+      "female": [
+        "bra",
+        "panties"
+      ]
+    }
+  },
+  {
+    "type": "mutation",
+    "id": "crc_trait_warrior",
+    "name": {
+      "str": "戦士[CRC]"
+    },
+    "points": 6,
+    "visibility": 0,
+    "description": "近接戦闘を専門とする職業です。非常に打たれ強く、近接武器全般の扱いに長けています。マナが自然回復しないため、魔法を使用するにはアイテムの助けが必要になります。",
+    "enchantments": [
+      "crc_enchantment_warrior"
+    ],
+    "passive_mods": {
+      "str_mod": 2,
+      "dex_mod": 1,
+      "int_mod": -3,
+      "per_mod": 0
+    },
+    "purifiable": false,
+    "starting_trait": false,
+    "valid": false
+  },
+  {
+    "type": "enchantment",
+    "id": "crc_enchantment_warrior_melee_damage",
+    "condition": "ALWAYS",
+    "values": [
+      {
+        "value": "ITEM_DAMAGE_BASH",
+        "multiply": 0.2
+      },
+      {
+        "value": "ITEM_DAMAGE_CUT",
+        "multiply": 0.2
+      },
+      {
+        "value": "ITEM_DAMAGE_STAB",
+        "multiply": 0.2
+      }
+    ]
+  },
+  {
+    "type": "enchantment",
+    "id": "crc_enchantment_warrior_two_handed",
+    "condition": {
+      "u_has_wielded_with_flag": "ALWAYS_TWOHAND"
+    },
+    "values": [
+      {
+        "value": "ITEM_ATTACK_SPEED",
+        "multiply": -0.1
+      }
+    ]
+  }
+]

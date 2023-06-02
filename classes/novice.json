@@ -1,0 +1,17 @@
+[
+  {
+    "type": "mutation",
+    "id": "crc_trait_novice",
+    "name": {
+      "str": "無職"
+    },
+    "points": 0,
+    "player_display": false,
+    "dummy": true,
+    "description": "職についていない状態です。",
+    "cancels": [
+      "crc_trait_priest",
+      "crc_trait_warrior"
+    ]
+  }
+]
