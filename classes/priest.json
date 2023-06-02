@@ -1,77 +1,75 @@
-[
-  {
-    "type": "talk_topic",
-    "id": "CRC_TALK_CLASS_MENU_MAIN_PRIEST",
-    "dynamic_line": "<trait_name:crc_trait_priest>: \"<trait_description:crc_trait_priest>\"",
-    "responses": [
-      {
-        "text": "この職業を選ぶ。",
-        "topic": "CRC_TALK_CLASS_MENU_MAIN",
-        "effect": [
-          { "u_add_trait": "crc_trait_priest" }
+[{
+        "type": "talk_topic",
+        "id": "CRC_TALK_CLASS_MENU_MAIN_PRIEST",
+        "dynamic_line": "<trait_name:crc_trait_priest>: \"<trait_description:crc_trait_priest>\"",
+        "responses": [{
+                "text": "この職業を選ぶ。",
+                "topic": "CRC_TALK_CLASS_MENU_MAIN",
+                "effect": [
+                    { "u_add_trait": "crc_trait_priest" }
+                ]
+            },
+            { "text": "戻る。", "topic": "CRC_TALK_CLASS_MENU_MAIN" },
+            { "text": "やめる。", "topic": "TALK_DONE" }
         ]
-      },
-      { "text": "戻る。", "topic": "CRC_TALK_CLASS_MENU_MAIN" },
-      { "text": "やめる。", "topic": "TALK_DONE" }
-    ]
-  },
-  {
-    "type": "profession",
-    "id": "crc_priest",
-    "name": "プリースト[CRC]",
-    "description": "かつては教会で多くの人々を教え導いてきました。いまはメイスでゾンビたちを天に導くのがあなたの使命です。",
-    "points": 6,
-    "traits": [ "crc_trait_priest" ],
-    "skills": [ { "level": 3, "name": "speech" } ],
-    "items": {
-      "both": {
-        "items": [ "pants", "longshirt", "socks", "cassock", "dress_shoes", "holy_symbol", "holybook_bible1" ],
-        "entries": [ { "group": "charged_smart_phone" }, { "item": "holy_symbol", "variant": "catholic_necklace" } ]
-      },
-      "male": [ "briefs" ],
-      "female": [ "bra", "panties" ]
+    },
+    {
+        "type": "profession",
+        "id": "crc_priest",
+        "name": "プリースト[CRC]",
+        "description": "かつては教会で多くの人々を教え導いてきました。いまはメイスでゾンビたちを天に導くのがあなたの使命です。",
+        "points": 6,
+        "traits": ["crc_trait_priest"],
+        "skills": [{ "level": 3, "name": "speech" }],
+        "items": {
+            "both": {
+                "items": ["pants", "longshirt", "socks", "cassock", "dress_shoes", "holy_symbol", "priest_beginner", "holybook_bible1"],
+                "entries": [{ "group": "charged_smart_phone" }, { "item": "holy_symbol", "variant": "catholic_necklace" }]
+            },
+            "male": ["briefs"],
+            "female": ["bra", "panties"] FF
+        }
+    },
+    {
+        "type": "mutation",
+        "id": "crc_trait_priest",
+        "name": { "str": "プリースト" },
+        "points": 6,
+        "visibility": 0,
+        "description": "ゾンビなどのこの世ならざる敵との戦いに長けているほか、武器の打撃力が向上します。 感覚-1 知性+1",
+        "enchantments": [
+            "crc_enchantment_priest"
+        ],
+        "passive_mods": { "per_mod": -1, "int_mod": 1 },
+        "purifiable": false,
+        "starting_trait": false,
+        "valid": false
+    },
+    {
+        "type": "enchantment",
+        "id": "crc_enchantment_priest",
+        "name": { "str": "追加効果 - 聖職者" },
+        "description": "ゾンビなどのこの世ならざる敵との戦いに長けているほか、武器の打撃力が向上します。",
+        "condition": "ALWAYS",
+        "values": [{ "value": "ITEM_DAMAGE_BASH", "multiply": 0.2 }],
+        "hit_you_effect": [{ "id": "crc_spell_priest_additional_attack" }]
+    },
+    {
+        "id": "crc_spell_priest_additional_attack",
+        "type": "SPELL",
+        "name": "追加ダメージ - 聖職者",
+        "description": "",
+        "valid_targets": ["hostile"],
+        "targeted_monster_species": ["ZOMBIE", "NETHER", "NETHER_PLAYER_HATE"],
+        "min_damage": 1,
+        "max_damage": 10,
+        "min_range": 1,
+        "max_range": 1,
+        "effect": "attack",
+        "shape": "blast",
+        "max_level": 1,
+        "damage_type": "pure",
+        "flags": ["SILENT", "NO_HANDS"],
+        "energy_source": "MANA"
     }
-  },
-  {
-    "type": "mutation",
-    "id": "crc_trait_priest",
-    "name": { "str": "プリースト" },
-    "points": 6,
-    "visibility": 0,
-    "description": "ゾンビなどのこの世ならざる敵との戦いに長けているほか、武器の打撃力が向上します。 感覚-1 知性+1",
-    "enchantments": [
-      "crc_enchantment_priest"
-    ],
-    "passive_mods": { "per_mod": -1, "int_mod": 1 },
-    "purifiable": false,
-    "starting_trait": false,
-    "valid": false
-  },
-  {
-    "type": "enchantment",
-    "id": "crc_enchantment_priest",
-    "name": { "str": "追加効果 - 聖職者" },
-    "description": "ゾンビなどのこの世ならざる敵との戦いに長けているほか、武器の打撃力が向上します。",
-    "condition": "ALWAYS",
-    "values": [ { "value": "ITEM_DAMAGE_BASH", "multiply": 0.2 } ],
-    "hit_you_effect": [ { "id": "crc_spell_priest_additional_attack" } ]
-  },
-  {
-    "id": "crc_spell_priest_additional_attack",
-    "type": "SPELL",
-    "name": "追加ダメージ - 聖職者",
-    "description": "",
-    "valid_targets": [ "hostile" ],
-    "targeted_monster_species": [ "ZOMBIE", "NETHER", "NETHER_PLAYER_HATE" ],
-    "min_damage": 1,
-    "max_damage": 10,
-    "min_range": 1,
-    "max_range": 1,
-    "effect": "attack",
-    "shape": "blast",
-    "max_level": 1,
-    "damage_type": "pure",
-    "flags": [ "SILENT", "NO_HANDS" ],
-    "energy_source": "MANA"
-  }
 ]

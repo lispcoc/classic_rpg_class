@@ -1,12 +1,10 @@
-[
-  {
+[{
     "type": "MOD_INFO",
     "id": "classic_rpg_class",
     "name": "追加 - クラシックRPG職[CRC]",
-    "authors": [ "LISPCOC" ],
-    "maintainers": [ "LISPCOC" ],
+    "authors": ["LISPCOC"],
+    "maintainers": ["LISPCOC"],
     "description": "クラシックなRPGに登場するような職業を追加します。",
     "category": "content",
-    "dependencies": [ "dda", "magiclysm" ]
-  }
-]
+    "dependencies": ["dda", "magiclysm"]
+}]
