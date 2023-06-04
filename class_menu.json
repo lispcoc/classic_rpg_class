@@ -96,11 +96,23 @@
           }
         },
         "text": "Gain [<trait_name:crc_trait_warrior>]",
-        "topic": "CRC_TALK_CLASS_MENU_MAIN"
+        "topic": "CRC_TALK_CLASS_MENU_MAIN_WARRIOR"
       },
       {
         "text": "やめる。",
         "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "crc_eoc_remove_class",
+    "effect": [
+      {
+        "u_lose_trait": "crc_trait_warrior"
+      },
+      {
+        "u_lose_trait": "crc_trait_priest"
       }
     ]
   }

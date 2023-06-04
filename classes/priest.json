@@ -9,7 +9,9 @@
         "topic": "CRC_TALK_CLASS_MENU_MAIN",
         "effect": [
           {
-            "u_add_trait": "crc_trait_novice"
+            "run_eocs": [
+              "crc_eoc_remove_class"
+            ]
           },
           {
             "u_add_trait": "crc_trait_priest"

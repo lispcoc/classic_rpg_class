@@ -9,7 +9,9 @@
         "topic": "CRC_TALK_CLASS_MENU_MAIN",
         "effect": [
           {
-            "u_add_trait": "crc_trait_novice"
+            "run_eocs": [
+              "crc_eoc_remove_class"
+            ]
           },
           {
             "u_add_trait": "crc_trait_warrior"
@@ -79,7 +81,8 @@
     "visibility": 0,
     "description": "近接戦闘を専門とする職業です。非常に打たれ強く、近接武器全般の扱いに長けています。マナが自然回復しないため、魔法を使用するにはアイテムの助けが必要になります。",
     "enchantments": [
-      "crc_enchantment_warrior"
+      "crc_enchantment_warrior_melee_damage",
+      "crc_enchantment_warrior_two_handed"
     ],
     "passive_mods": {
       "str_mod": 2,
